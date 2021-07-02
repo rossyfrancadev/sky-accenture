@@ -1,15 +1,15 @@
 ***Settings***
-Library     SeleniumLibrary
-Resource    ../pages/home.page.robot
-Resource    ../pages/default.page.robot
+Resource    ../pages/home_page.robot
+Resource    ../pages/default_page.robot
+Resource    ../pages/programacao_page.robot
 
 ***Variables***
 ${titulo}
 ${horario}
-***Keywords
+***Keywords***
 
 Dado que eu estou na tela de home
-    Title Should Be    ${TITULO_DA_PAGINA}
+    Title Should Be    ${TITULO_DA_PAGINA_HOME}
 
 E fecho o modal-dialog
     Clicar    ${MODAL_DIALOG_FECHAR}
