@@ -20,24 +20,22 @@ E Seleciono o menu "${OPCAO_MENU}"
 
 Quando selecionar a programação que esteja passando na hora
 
-    Scroll Element Into View    css=div.channel-list-item
-    Mouse over                  css=div.schedule-inner.schedule-live
-    ${element}                  Get WebElement                          css=div.schedule-inner.schedule-live > div.program-schedule-content > h2.program-schedule-title
-    ${titulo}=                  Get Element Attribute                   ${element}                                                                                                                    innerText
-    ${element}=                 Get WebElement                          css=div.schedule-inner.schedule-live > div.program-schedule-content > div.program-schedule-info > div.program-duration > p
-    ${horario}=                 Get Element Attribute                   ${element}                                                                                                                    innerText
+    Scroll Element Into View    css=${GRADE_PAINEL}
+    Mouse over                  css=${PROGRAMA_ATUAL}
+    ${element}                  Get WebElement           css=${TITULO_PROGRAMA}
+    ${titulo}=                  Get Element Attribute    ${element}                 innerText
+    ${element}=                 Get WebElement           css=${HORARIO_PROGRAMA}
+    ${horario}=                 Get Element Attribute    ${element}                 innerText
 
-    Clicar                              div.schedule-inner.schedule-live
-    Wait Until Page Contains Element    css=div.sky-modal-program-title > h2
-
-
+    Clicar                              ${PROGRAMA_ATUAL}
+    Wait Until Page Contains Element    css=${MODAL_PROGRAMA}
 
 Então devo ter o título e o horário similar na descrição do programa selecionado
 
-    ${modal_element}    Get WebElement           css=div.sky-modal-program-title > h2
-    ${titulo_modal}     Get Element Attribute    ${modal_element}                        innerText
+    ${modal_element}    Get WebElement           css=${TITULO_MODAL}
+    ${titulo_modal}     Get Element Attribute    ${modal_element}       innerText
 
-    ${modal_element}=    Get WebElement    css=div.sky-modal-program-date-time > span
+    ${modal_element}=    Get WebElement    css=${HORARIO_MODAL}
     ${horario_modal}     Get Text          ${modal_element}
 
     Should Be Equal As Strings    ${titulo}     ${titulo_modal}
