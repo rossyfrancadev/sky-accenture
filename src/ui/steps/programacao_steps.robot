@@ -19,24 +19,20 @@ E Seleciono o menu "${OPCAO_MENU}"
     Clicar                               ${PROGRAMACAO}
 
 Quando selecionar a programação que esteja passando na hora
+    Wait Until Page Contains Element    css=${GRADE_PAINEL}
+    Scroll Element Into View            css=${GRADE_PAINEL}
+    Mouse over                          css=${PROGRAMA_ATUAL}
+    ${element}                          Get WebElement           css=${TITULO_PROGRAMA}
+    ${titulo}                           Get Element Attribute    ${element}                 innerText
+    ${element}=                         Get WebElement           css=${HORARIO_PROGRAMA}
+    ${horario}                          Get Element Attribute    ${element}                 innerText
 
-    Scroll Element Into View    css=${GRADE_PAINEL}
-    Mouse over                  css=${PROGRAMA_ATUAL}
-    ${element}                  Get WebElement           css=${TITULO_PROGRAMA}
-    ${titulo}=                  Get Element Attribute    ${element}                 innerText
-    ${element}=                 Get WebElement           css=${HORARIO_PROGRAMA}
-    ${horario}=                 Get Element Attribute    ${element}                 innerText
-
-    Clicar                              ${PROGRAMA_ATUAL}
+    Wait Until Keyword Succeeds         30s                      2s    Clicar    ${PROGRAMA_ATUAL}
     Wait Until Page Contains Element    css=${MODAL_PROGRAMA}
 
 Então devo ter o título e o horário similar na descrição do programa selecionado
+    Wait Until Page Contains Element    css=${TITULO_MODAL}
 
-    ${modal_element}    Get WebElement           css=${TITULO_MODAL}
-    ${titulo_modal}     Get Element Attribute    ${modal_element}       innerText
-
-    ${modal_element}=    Get WebElement    css=${HORARIO_MODAL}
-    ${horario_modal}     Get Text          ${modal_element}
-
-    Should Be Equal As Strings    ${titulo}     ${titulo_modal}
-    Should Be Equal As Strings    ${horario}    ${horario_modal}
+    ##Asserção oscila um erro de não pegar o valor da variável título e horário modal
+    Element Text Should be    css=${TITULO_MODAL}    ${titulo}           
+    Element Text Should be    css=${HORARIO_MODAL}       ${horario}

@@ -16,3 +16,9 @@ Clicar
     [Arguments]                         ${CssSelector}
     Wait Until Page Contains Element    css=${CssSelector}
     Click Element                       css=${CssSelector}
+
+
+Custom Teardown
+    #Run Keyword If Test Failed    Fail    FALHOWW
+
+    Fechar Navegador 
