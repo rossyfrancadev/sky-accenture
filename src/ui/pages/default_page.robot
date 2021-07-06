@@ -1,6 +1,6 @@
 ***Settings***
 Resource    ../../utils/environment.robot
-Library     SeleniumLibrary
+Library     SeleniumLibrary                  run_on_failure=Nothing
 ***Variables***
 
 ***Keywords***
@@ -11,6 +11,7 @@ Abrir Navegador
 
 Fechar Navegador
     Close Browser
+    Run Keyword And Continue On Failure    Log Variables    INFO
 
 Clicar
     [Arguments]                         ${CssSelector}
@@ -21,4 +22,16 @@ Clicar
 Custom Teardown
     #Run Keyword If Test Failed    Fail    FALHOWW
 
-    Fechar Navegador 
+    Fechar Navegador
+
+Custom Setup
+    ${headless}=      Evaluate               ${HEADLESS} == False
+    Run Keyword if    ${headless}            
+    ...               Pass Execution         ${BROWSER}              headlesschrome
+    ...               Set Global Variable    ${BROWSER}
+    ...               ELSE IF
+    ...               ${BROWSER}             chrome
+    ...               Set Global Variable    ${BROWSER}
+    END
+
+    Abrir Navegador
