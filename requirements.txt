@@ -1,3 +1,5 @@
 robotframework
 robotframework-selenium2library
 robotframework-seleniumlibrary
+RESTinstance
+robotframework-appiumlibrary

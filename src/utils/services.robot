@@ -1,0 +1,2 @@
+***Variables***
+${WEATHER}    weather

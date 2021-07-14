@@ -1,0 +1,5 @@
+***Variables***
+${ANDROID_AUTOMATION_NAME}     uiautomation2
+${ANDROID_APP}                 ${CURDIR}/
+${ANDROID_PLATFORM_NAME}       android
+${ANDROID_PLATFORM_VERSIOM}    %{ANDROID_PLATFORM_VERSIOM=10}
