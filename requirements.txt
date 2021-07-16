@@ -3,3 +3,4 @@ robotframework-selenium2library
 robotframework-seleniumlibrary
 RESTinstance
 robotframework-appiumlibrary
+robotframework-faker

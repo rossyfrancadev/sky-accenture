@@ -4,5 +4,20 @@ Resource    ../utils/environment.robot
 
 ***Keywords***
 Open Test application
-    Open Application    http://localhost:4723/wd/hub      platformName=${ANDROID_PLATFORM_NAME}             deviceName=emulator-5554      
-    ...                 appPackage=chat21.android.demo    appActivity=chat21.android.demo.SplashActivity    automatioName=Uiautomator2
+    Open Application    ${URL_DEFAULT}                 platformName=${ANDROID_PLATFORM_NAME}    
+    ...                 appPackage=${APP_PACKAGE}      deviceName=${DEVICE_NAME}                
+    ...                 appActivity=${APP_ACTIVITY}    automatioName=${AUTOMATION_NAME}         
+
+Close Test Application
+    Close Application
+
+
+Clicar
+    [Arguments]                         ${element}
+    Wait until Page Contains Element    ${element}
+    Click Element                       ${element}
+
+Escrever
+    [Arguments]                         ${element}    ${value}
+    Wait until Page Contains Element    ${element}
+    Input Text                          ${element}    ${value}

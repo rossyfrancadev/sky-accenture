@@ -15,6 +15,10 @@
 
 ### Rodar todos os testes
 >  robot -d results  ./src/ui/
+### Rodar pelo titulo do teste
+>  robot -d results --loglevel TRACE -t "Cenario 02: Realizar login na aplicação" ./src/mobile/tests/
+### Rodar pela tag
+>  robot -d results --loglevel TRACE -i Login  ./src/mobile/tests/
 
 
 ### Bibliotecas
