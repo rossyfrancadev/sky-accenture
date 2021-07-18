@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+jobs:
+
+   build: 'Test'
+pool:
+      vmImage: 'vs2017-win2016'
+strategy:
+      matrix:
+        Python37:
+          python.version: '3.7'
+      maxParallel: 1
+      steps:
+        - task: UsePythonVersion@0
+inputs:
+          versionSpec: '${python.version}'
+          architecture: 'x64'
+script: pip install -r requirements.txt && npm install chromedriver
+  displayName: 'Install dependencies'
+powershell: robot -d results  ./src/ui/
+  displayName: 'Run robot scenarios'
