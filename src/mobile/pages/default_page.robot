@@ -21,3 +21,12 @@ Escrever
     [Arguments]                         ${element}    ${value}
     Wait until Page Contains Element    ${element}
     Input Text                          ${element}    ${value}
+
+Liberar popup
+    Clicar    //android.widget.Button[@text="Continue"] 
+    Clicar    //android.widget.Button[@text="OK"]
+
+Confirmacao de tela
+    [Arguments]                         ${element}
+    Wait until Page Contains Element    ${element}    20s
+    Page Should Contain Element         ${element}

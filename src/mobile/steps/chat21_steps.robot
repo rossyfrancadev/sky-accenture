@@ -8,8 +8,10 @@ Resource    ../utils/environment.robot
 Library    FakerLibrary
 ***Keywords***
 Dado que eu estou na inicial e clico em signup
-    Log to console    Hello World 
-    Clicar            ${SIGNUP}
+    ${success}=       Run Keyword and Return Status    Get WebElement    //android.widget.Button[@text="Continue"]
+    Run Keyword If    ${success}                       Liberar popup
+    #Clicar    //android.widget.Button[@text="Not now"]
+    Clicar    ${SIGNUP}
 
 
 Quando preencho o formulário com os dados necessários
@@ -23,12 +25,15 @@ Quando preencho o formulário com os dados necessários
     Clicar            ${SIGNUP_BUTTON}
 
 Então devo ser direcionado a tela de home
-    Wait until Page Contains Element    ${HOME_BUTTON}
-    Page Should Contain Element         ${HOME_BUTTON}
+    Confirmacao de tela    ${HOME_BUTTON}    
+
 
 Dado que estou na tela de login
-    Wait until Page Contains Element    ${LOGIN}
-    Page Should Contain Element         ${LOGIN}
+    ${success}=       Run Keyword and Return Status    Get WebElement    //android.widget.Button[@text="Continue"]
+    Run Keyword If    ${success}                       Liberar popup
+
+    Confirmacao de tela    ${LOGIN}
+
 
 Quando preencher email e senha
     Escrever    ${EMAIL}    ${USER_TEST}[email]

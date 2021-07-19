@@ -12,7 +12,6 @@
 
 ### instalar dependências
 > pip install -r requirements.txt
-
 ### Rodar todos os testes
 >  robot -d results  ./src/ui/
 ### Rodar pelo titulo do teste
@@ -20,9 +19,7 @@
 ### Rodar pela tag
 >  robot -d results --loglevel TRACE -i Login  ./src/mobile/tests/
 
-
 ### Bibliotecas
 
 [RobotFramework](https://robotframework.org/)
 [Selenium Library](https://github.com/robotframework/SeleniumLibrary/)
-teste
