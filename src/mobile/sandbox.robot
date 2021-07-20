@@ -14,7 +14,8 @@ Should open application corretly
 ***Keywords***
 
 Open test application
-    Log to console    Test OK
+    Log to console            Test OK
+    Start Screen Recording    180s
 
 
 

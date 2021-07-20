@@ -1,12 +1,23 @@
 ***Settings***
 Library     AppiumLibrary
+Library     String
 Resource    ../utils/environment.robot
-
+***Variables***
+${test_case}
 ***Keywords***
 Open Test application
     Open Application    ${URL_DEFAULT}                 platformName=${ANDROID_PLATFORM_NAME}    
     ...                 appPackage=${APP_PACKAGE}      deviceName=${DEVICE_NAME}                
     ...                 appActivity=${APP_ACTIVITY}    automatioName=${AUTOMATION_NAME}         
+    Run Keyword If      ${RECORDING}                   Start Screen Recording                   180s
+
+
+Customer teardown
+    ${test_case}=    Remove String    ${TEST NAME}    ${SPACE}    :
+
+    Run Keyword If       ${RECORDING}    Stop Screen Recording    filename=${test_case}
+    Log Variables
+    Close Application
 
 Close Test Application
     Close Application

@@ -3,8 +3,8 @@ Library     AppiumLibrary
 Resource    ../steps/chat21_steps.robot
 Resource    ../pages/default_page.robot
 
-Test Setup        Open Test application
-#Test Teardown    Close Application
+Test Setup       Open Test application
+Test Teardown    Customer teardown
 
 ***Test Cases***
 

@@ -8,10 +8,11 @@ Resource    ../utils/environment.robot
 Library    FakerLibrary
 ***Keywords***
 Dado que eu estou na inicial e clico em signup
-    ${success}=       Run Keyword and Return Status    Get WebElement    //android.widget.Button[@text="Continue"]
-    Run Keyword If    ${success}                       Liberar popup
+   
+    ${success}=               Run Keyword and Return Status    Get WebElement    //android.widget.Button[@text="Continue"]
+    Run Keyword If            ${success}                       Liberar popup
     #Clicar    //android.widget.Button[@text="Not now"]
-    Clicar    ${SIGNUP}
+    Clicar                    ${SIGNUP}
 
 
 Quando preencho o formulário com os dados necessários

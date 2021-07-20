@@ -13,3 +13,4 @@ ${APP_ACTIVITY}    chat21.android.demo.SplashActivity
 
 
 &{USER_TEST}    email=rossyfranca@gmail.com    password=value123
+${RECORDING}    ${False}
